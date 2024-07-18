@@ -13,13 +13,13 @@ app.use("/posts", postRouter);
 const PORT = process.env.PORT || 3001;
 
 const db = require("./models");
-db.sequelize
-  .sync()
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error("Unable to connect to the database:", err);
-  });
+// db.sequelize
+//   .sync()
+//   .then(() => {
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+// })
+// .catch((err) => {
+//   console.error("Unable to connect to the database:", err);
+// });
