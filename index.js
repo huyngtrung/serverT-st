@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const db = require("./models");
+// const db = require("./models");
 
 require("dotenv").config();
 
@@ -13,8 +13,8 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3001;
 
-db.sequelize.sync().then(() => {
-  app.listen(PORT, () => {
-    console.log("Server is running....");
-  });
+// db.sequelize.sync().then(() => {
+app.listen(PORT, () => {
+  console.log("Server is running....");
 });
+// });
