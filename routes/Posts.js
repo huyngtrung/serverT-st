@@ -1,30 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const { Post } = require("../models");
+const { Posts } = require("../models");
 
-// POST route to create a new post
-router.post("/", async (req, res) => {
-  try {
-    const post = req.body;
-    const newPost = await Post.create(post);
-    res.json(newPost);
-  } catch (error) {
-    res
-      .status(500)
-      .json({ error: "An error occurred while creating the post." });
-  }
+router.get("/", async (req, res) => {
+  const listOfPosts = await Posts.findAll();
+  res.json(listOfPosts);
 });
 
-// GET route to retrieve all posts
-router.get("/", async (req, res) => {
-  try {
-    const posts = await Post.findAll();
-    res.json(posts);
-  } catch (error) {
-    res
-      .status(500)
-      .json({ error: "An error occurred while retrieving posts." });
-  }
+router.post("/", async (req, res) => {
+  const post = req.body;
+  await Posts.create(post);
+  res.json(post);
 });
 
 module.exports = router;
