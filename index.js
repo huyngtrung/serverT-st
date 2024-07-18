@@ -13,7 +13,7 @@ app.use("/posts", postRouter);
 
 const PORT = process.env.PORT || 5000;
 
-sequelize.sync().then(() => {
+sequelize.then(() => {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });
